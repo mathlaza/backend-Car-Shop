@@ -3,27 +3,30 @@ import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
 
 class CarService {
+  private carODM;
+
+  constructor() {
+    this.carODM = new CarODM();
+  }
+
   private registerCar(insertedCar: ICar) {
     if (insertedCar) return new Car(insertedCar);
     return null;
   }
 
   public async create(insertedCar: ICar) {
-    const carODM = new CarODM();
-    const newCar = await carODM.create(insertedCar);
+    const newCar = await this.carODM.create(insertedCar);
     return this.registerCar(newCar);
   }
 
   public async findAll() {
-    const carODM = new CarODM();
-    const allCars = await carODM.findAll();
+    const allCars = await this.carODM.findAll();
     const data = allCars.map((car: ICar) => this.registerCar(car));
     return data;
   }
 
   public async findById(id: string) {
-    const carODM = new CarODM();
-    const foundCar = await carODM.findById(id);
+    const foundCar = await this.carODM.findById(id);
     if (foundCar) return this.registerCar(foundCar);
     return undefined;
   }
