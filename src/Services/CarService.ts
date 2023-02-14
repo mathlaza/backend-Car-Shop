@@ -13,6 +13,13 @@ class CarService {
     const newCar = await carODM.create(insertedCar);
     return this.registerCar(newCar);
   }
+
+  public async findAll() {
+    const carODM = new CarODM();
+    const allCars = await carODM.findAll();
+    const data = allCars.map((car: ICar) => this.registerCar(car));
+    return data;
+  }
 }
 
 export default CarService;
