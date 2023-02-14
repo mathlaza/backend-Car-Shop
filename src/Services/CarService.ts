@@ -11,7 +11,7 @@ class CarService {
   public async create(insertedCar: ICar) {
     const carODM = new CarODM();
     const newCar = await carODM.create(insertedCar);
-    return newCar;
+    return this.registerCar(newCar);
   }
 }
 
