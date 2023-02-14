@@ -20,6 +20,13 @@ class CarService {
     const data = allCars.map((car: ICar) => this.registerCar(car));
     return data;
   }
+
+  public async findById(id: string) {
+    const carODM = new CarODM();
+    const foundCar = await carODM.findById(id);
+    if (foundCar) return this.registerCar(foundCar);
+    return undefined;
+  }
 }
 
 export default CarService;
