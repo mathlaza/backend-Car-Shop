@@ -23,6 +23,12 @@ class MotoService {
     const result = allMotocycles.map((motorcycle: IMotorcycle) => this.mountMoto(motorcycle));
     return result;
   }
+
+  public async findById(id: string) {
+    const foundMoto = await this.motoODM.findById(id);
+    if (foundMoto) return this.mountMoto(foundMoto);
+    return undefined;
+  }
 }
 
 export default MotoService;

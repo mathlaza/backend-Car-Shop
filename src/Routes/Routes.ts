@@ -16,4 +16,6 @@ routes.post('/motorcycles', (req, res, next) => new MotoController(req, res, nex
 
 routes.get('/motorcycles', (_req, res, _next) => new MotoController(_req, res, _next).findAll());
 
+routes.get('/motorcycles/:id', (req, res, next) => new MotoController(req, res, next).findById());
+
 export default routes;
