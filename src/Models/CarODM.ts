@@ -15,6 +15,11 @@ class CarODM extends AbstractODM<ICar> {
     });
     super(schema, 'Car'); // Será modificado para "cars" pelo Mongoose.
   }
+
+  public async updateCar(id: string, carUpdated: ICar) {
+    await this.model.updateOne({ _id: id }, { ...carUpdated });
+    return this.findById(id);
+  }
 }
 
 export default CarODM;
