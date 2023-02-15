@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import { expect } from 'chai';
 import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/CarService';
-import { insertedCar, allCars, allCarsResult } from '../mocks/CarsMock';
+import { insertedCar, allCars, allCarsResult, carUpdated, carToUpdate } from '../mocks/CarsMock';
 
 describe('Tests on layer Service of Cars', function () {
   afterEach(sinon.restore);
@@ -44,5 +44,15 @@ describe('Tests on layer Service of Cars', function () {
     const noResult = await service.findById('xxxxxxxxxxxxxxxxxxxxxxxx');
 
     expect(noResult).to.be.deep.equal(undefined);
+  });
+
+  it('Should update a car', async function () {
+    sinon.stub(Model, 'updateOne').resolves();
+    sinon.stub(Model, 'findOne').resolves(carUpdated);
+
+    const service = new CarService();
+    const result = await service.updateCar(allCarsResult[1].id, carToUpdate);
+
+    expect(result).to.be.deep.equal(carUpdated);
   });
 });

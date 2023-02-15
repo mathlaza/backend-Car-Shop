@@ -55,4 +55,24 @@ const allCarsResult = [
   },
 ];
 
-export { insertedCar, allCars, allCarsResult };
+const carToUpdate = {
+  model: 'Cadillac',
+  year: 1974,
+  color: 'Purple',
+  buyValue: 99.000,
+  doorsQty: 4,
+  seatsQty: 5,
+};
+
+const carUpdated = {
+  id: '63ec6798ebaeb9559178d8f4',
+  model: 'Cadillac',
+  year: 1974,
+  color: 'Purple',
+  status: true,
+  buyValue: 99.000,
+  doorsQty: 4,
+  seatsQty: 5,
+};
+
+export { insertedCar, allCars, allCarsResult, carToUpdate, carUpdated };
