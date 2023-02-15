@@ -35,6 +35,10 @@ class CarService {
     const result = this.mountCar(updated);
     return result;
   }
+
+  public async deleteCar(id: string) {
+    await this.carODM.delete(id);
+  }
 }
 
 export default CarService;

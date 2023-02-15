@@ -27,6 +27,10 @@ abstract class AbstractODM<T> {
   public async findById(id: string) {
     return this.model.findOne({ _id: id });
   }
+
+  public async delete(id: string) {
+    await this.model.deleteOne({ _id: id });
+  }
 }
 
 export default AbstractODM;
