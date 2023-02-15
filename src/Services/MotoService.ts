@@ -35,6 +35,10 @@ class MotoService {
     const result = this.mountMoto(updated);
     return result;
   }
+
+  public async deleteMoto(id: string) {
+    await this.motoODM.delete(id);
+  }
 }
 
 export default MotoService;

@@ -8,12 +8,16 @@ class MotoController {
   private res: Response;
   private next: NextFunction;
   private motoService: MotoService;
+  private INVALID_ID;
+  private NOT_FOUND;
 
   constructor(req: Request, res: Response, next: NextFunction) {
     this.req = req;
     this.res = res;
     this.next = next;
     this.motoService = new MotoService();
+    this.INVALID_ID = 'Invalid mongo id';
+    this.NOT_FOUND = 'Motorcycle not found';
   }
 
   public async create() {
@@ -44,10 +48,10 @@ class MotoController {
     const { id } = this.req.params;
 
     try {
-      if (!isValidObjectId(id)) return this.res.status(422).json({ message: 'Invalid mongo id' });
+      if (!isValidObjectId(id)) return this.res.status(422).json({ message: this.INVALID_ID });
 
       const foundMoto = await this.motoService.findById(id);
-      if (!foundMoto) return this.res.status(404).json({ message: 'Motorcycle not found' });
+      if (!foundMoto) return this.res.status(404).json({ message: this.NOT_FOUND });
 
       return this.res.status(200).json(foundMoto);
     } catch (error) {
@@ -59,13 +63,29 @@ class MotoController {
     const { id } = this.req.params;
     const { body } = this.req;
     try {
-      if (!isValidObjectId(id)) return this.res.status(422).json({ message: 'Invalid mongo id' });
+      if (!isValidObjectId(id)) return this.res.status(422).json({ message: this.INVALID_ID });
 
       const foundMoto = await this.motoService.findById(id);
-      if (!foundMoto) return this.res.status(404).json({ message: 'Motorcycle not found' });
+      if (!foundMoto) return this.res.status(404).json({ message: this.NOT_FOUND });
 
       const motoUpdated = await this.motoService.updateMoto(id, body);
       return this.res.status(200).json(motoUpdated);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async deleteMoto() {
+    const { id } = this.req.params;
+
+    try {
+      if (!isValidObjectId(id)) return this.res.status(422).json({ message: this.INVALID_ID });
+
+      const foundCar = await this.motoService.findById(id);
+      if (!foundCar) return this.res.status(404).json({ message: this.NOT_FOUND });
+
+      await this.motoService.deleteMoto(id);
+      return this.res.status(204).json();
     } catch (error) {
       this.next(error);
     }
