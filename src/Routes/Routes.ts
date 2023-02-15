@@ -14,4 +14,6 @@ routes.put('/cars/:id', (req, res, next) => new CarController(req, res, next).up
 
 routes.post('/motorcycles', (req, res, next) => new MotoController(req, res, next).create());
 
+routes.get('/motorcycles', (_req, res, _next) => new MotoController(_req, res, _next).findAll());
+
 export default routes;

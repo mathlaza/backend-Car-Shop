@@ -17,6 +17,12 @@ class MotoService {
     const newMoto = await this.motoODM.create(insertedMoto);
     return this.mountMoto(newMoto);
   }
+
+  public async findAll() {
+    const allMotocycles = await this.motoODM.findAll();
+    const result = allMotocycles.map((motorcycle: IMotorcycle) => this.mountMoto(motorcycle));
+    return result;
+  }
 }
 
 export default MotoService;

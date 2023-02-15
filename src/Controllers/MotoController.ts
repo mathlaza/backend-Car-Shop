@@ -33,6 +33,11 @@ class MotoController {
       this.next(error);
     }
   }
+
+  public async findAll() {
+    const allMotorcycles = await this.motoService.findAll();
+    return this.res.status(200).json(allMotorcycles);
+  }
 }
 
 export default MotoController;
