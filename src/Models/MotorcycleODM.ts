@@ -15,6 +15,11 @@ class MotorcycleODM extends AbstractODM<IMotorcycle> {
     });
     super(schema, 'Motorcycle'); // Será modificado para "motorcycles" pelo Mongoose.
   }
+
+  public async updateMoto(id: string, motoUpdated: IMotorcycle) {
+    await this.model.updateOne({ _id: id }, { ...motoUpdated });
+    return this.findById(id);
+  }
 }
 
 export default MotorcycleODM;

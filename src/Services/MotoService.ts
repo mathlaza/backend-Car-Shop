@@ -29,6 +29,12 @@ class MotoService {
     if (foundMoto) return this.mountMoto(foundMoto);
     return undefined;
   }
+
+  public async updateMoto(id: string, motoUpdated: IMotorcycle) {
+    const updated = await this.motoODM.updateMoto(id, motoUpdated) as IMotorcycle;
+    const result = this.mountMoto(updated);
+    return result;
+  }
 }
 
 export default MotoService;
