@@ -10,8 +10,7 @@ class CarService {
   }
 
   private registerCar(insertedCar: ICar) {
-    if (insertedCar) return new Car(insertedCar);
-    return null;
+    return new Car(insertedCar);
   }
 
   public async create(insertedCar: ICar) {
