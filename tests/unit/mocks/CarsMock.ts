@@ -59,6 +59,7 @@ const carToUpdate = {
   model: 'Cadillac',
   year: 1974,
   color: 'Purple',
+  status: true,
   buyValue: 99.000,
   doorsQty: 4,
   seatsQty: 5,
