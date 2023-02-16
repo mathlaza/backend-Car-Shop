@@ -1,3 +1,5 @@
+<img src="car_shop_api.gif"></img>
+
 # Car Shop API
 
 ## Projeto realizado durante o curso da Trybe no módulo de back-end, para estudo de `Mongoose` e `POO`.
@@ -15,7 +17,24 @@ Os arquivos criados por mim encontram-se dentro das pastas /src e /tests. O rest
 
 <br>
 
-## Rodando a aplicação inicial via Docker
+## Rodando a aplicação localmente via Docker
+
+- Clone o repositório:
+  
+```bash
+  git clone git@github.com:mathlaza/backend-Car-Shop.git
+```
+- Entre no diretório do repositório:
+  
+```bash
+  cd backend-Car-Shop
+```
+
+- Instale as dependências:
+  
+```bash
+  npm install
+```
 
 - Inicie os contêineres via Docker Compose:
   
