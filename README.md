@@ -5,7 +5,7 @@
 ## Projeto realizado durante o curso da Trybe no módulo de back-end, para estudo de `Mongoose` e `POO`.
 <br>
 
-Trata-se de uma API com `CRUD`, construída com os princípios de Programação Orientada a Objetos `(POO)`, para gerenciar uma concessionária de veículos. Foi projetada utilizando o banco de dados `MongoDB`, através do framework do `Mongoose`.
+Trata-se de uma API com `CRUD` (Create, Read, Update, Delete), construída com os princípios de Programação Orientada a Objetos `(POO)`, para gerenciar uma concessionária de veículos. Foi projetada utilizando o banco de dados `MongoDB`, através do framework do `Mongoose`.
 
 Nela, é possível cadastrar, ler, atualizar e excluir carros e motocicletas do banco de dados, através de requisições http.
 
