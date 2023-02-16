@@ -55,4 +55,16 @@ describe('Tests on layer Service of Motorcycles', function () {
 
     expect(result).to.be.deep.equal(motoUpdated);
   });
+
+  it('Should delete a motorcycle', async function () {
+    sinon.stub(Model, 'deleteOne').resolves();
+
+    const deleted: Motorcycle = new Motorcycle(insertedMoto);
+    sinon.stub(Model, 'findOne').resolves(deleted);
+
+    const service = new MotoService();
+    const result = await service.deleteMoto(allMotosResult[1].id);
+
+    expect(result).to.be.deep.equal(undefined);
+  });
 });

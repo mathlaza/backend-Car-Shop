@@ -55,4 +55,16 @@ describe('Tests on layer Service of Cars', function () {
 
     expect(result).to.be.deep.equal(carUpdated);
   });
+
+  it('Should delete a car', async function () {
+    sinon.stub(Model, 'deleteOne').resolves();
+
+    const deleted: Car = new Car(insertedCar);
+    sinon.stub(Model, 'findOne').resolves(deleted);
+
+    const service = new CarService();
+    const result = await service.deleteCar(allCarsResult[1].id);
+
+    expect(result).to.be.deep.equal(undefined);
+  });
 });
